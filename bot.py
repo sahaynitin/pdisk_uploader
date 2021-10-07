@@ -28,6 +28,41 @@ async def start(bot, message):
         f"**𝗛𝗘𝗟𝗟𝗢🎈{message.chat.first_name}!**\n\n"
         "𝐈'𝐦 𝐚 𝐏𝐝𝐢𝐬𝐤 𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐫 𝐛𝐨𝐭. 𝐉𝐮𝐬𝐭 𝐬𝐞𝐧𝐝 𝐦𝐞 𝐥𝐢𝐧𝐤 𝐨𝐫 𝐅𝐮𝐥𝐥 𝐩𝐨𝐬𝐭... \n 𝐓𝐡𝐢𝐬 𝐛𝐨𝐭 𝐢𝐬 𝐦𝐚𝐝𝐞 𝐛𝐲 @ParitoshPky_Official💖")
 
+HELP = """
+Send Me Direct Download Link Like Mirror Or From @LinkXGenBot.
+
+Send As This Format
+
+link | Title
+
+Or
+
+Video link | Title | Thumbnail link
+
+NOTE:
+➢ Do Not Spam, Send Link One By One
+➢ To Know Status Just Go To cofilink.com/home
+"""
+
+# NON_OWNER = "You Can't Use Me Ask My [Owner](tg://user?id={})"
+
+
+START_BUTTONS = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('Help', callback_data='help'),
+        InlineKeyboardButton('Close', callback_data='close')
+        ]]
+    )
+HELP_BUTTONS = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('📮 Update 📮', url='https://telegram.dog/HeimanSupports/'),
+        InlineKeyboardButton('🛠️ Support 🛠️', url='https://telegram.dog/HeimanSupport/'),
+        ],[
+        InlineKeyboardButton('Home', callback_data='home'),
+        InlineKeyboardButton('Close', callback_data='close')
+        ]]
+    )
+
 
 @bot.on_message(filters.text & filters.private)
 async def pdisk_uploader(bot, message):
@@ -146,10 +181,10 @@ async def remove_username(new_List):
 
 async def addFooter(str):
     footer = """
-━━━━━━━━━━━━━━━
-⚙️ How to Download / Watch Online or Change Audio : https://bit.ly/pdisk_tuts
-━━━━━━━━━━━━━━━
-⭐️JOIN CHANNEL ➡️ t.me/""" + CHANNEL
+
+📍 How to Download / Watch Online or Change Audio : https://bit.ly/pdisk_tuts
+
+📡 Update Channel ➡️ t.me/""" + CHANNEL
     return str + footer
 
 bot.run()
