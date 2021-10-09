@@ -28,41 +28,6 @@ async def start(bot, message):
         f"**𝗛𝗘𝗟𝗟𝗢🎈{message.chat.first_name}!**\n\n"
         "𝐈'𝐦 𝐚 𝐏𝐝𝐢𝐬𝐤 𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐫 𝐛𝐨𝐭. 𝐉𝐮𝐬𝐭 𝐬𝐞𝐧𝐝 𝐦𝐞 𝐥𝐢𝐧𝐤 𝐨𝐫 𝐅𝐮𝐥𝐥 𝐩𝐨𝐬𝐭... \n 𝐓𝐡𝐢𝐬 𝐛𝐨𝐭 𝐢𝐬 𝐦𝐚𝐝𝐞 𝐛𝐲 @ParitoshPky_Official💖")
 
-HELP = """
-Send Me Direct Download Link Like Mirror Or From @LinkXGenBot.
-
-Send As This Format
-
-link | Title
-
-Or
-
-Video link | Title | Thumbnail link
-
-NOTE:
-➢ Do Not Spam, Send Link One By One
-➢ To Know Status Just Go To cofilink.com/home
-"""
-
-# NON_OWNER = "You Can't Use Me Ask My [Owner](tg://user?id={})"
-
-
-START_BUTTONS = InlineKeyboardMarkup(
-        [[
-        InlineKeyboardButton('Help', callback_data='help'),
-        InlineKeyboardButton('Close', callback_data='close')
-        ]]
-    )
-HELP_BUTTONS = InlineKeyboardMarkup(
-        [[
-        InlineKeyboardButton('📮 Update 📮', url='https://telegram.dog/HeimanSupports/'),
-        InlineKeyboardButton('🛠️ Support 🛠️', url='https://telegram.dog/HeimanSupport/'),
-        ],[
-        InlineKeyboardButton('Home', callback_data='home'),
-        InlineKeyboardButton('Close', callback_data='close')
-        ]]
-    )
-
 
 @bot.on_message(filters.text & filters.private)
 async def pdisk_uploader(bot, message):
@@ -149,42 +114,3 @@ async def multi_pdisk_up(ml_string):
     url_index = []
     count = 0
     for i in range(nml_len):
-        for j in range(u_len):
-            if (urls[j] in new_ml_string[i]):
-                url_index.append(count)
-        count += 1
-    new_urls = await new_pdisk_url(urls)
-    url_index = list(dict.fromkeys(url_index))
-    i = 0
-    for j in url_index:
-        new_ml_string[j] = new_ml_string[j].replace(urls[i], new_urls[i])
-        i += 1
-
-    new_string = " ".join(new_ml_string)
-    return await addFooter(new_string)
-
-
-async def new_pdisk_url(urls):
-    new_urls = []
-    for i in urls:
-        time.sleep(0.2)
-        new_urls.append(await pdisk_up(i))
-    return new_urls
-
-
-async def remove_username(new_List):
-    for i in new_List:
-        if('@' in i or 't.me' in i or 'https://bit.ly/3m4gabB' in i or 'https://bit.ly/pdisk_tuts' in i or 'telegra.ph' in i):
-            new_List.remove(i)
-    return new_List
-
-
-async def addFooter(str):
-    footer = """
-
-📍 How to Download / Watch Online or Change Audio : https://bit.ly/pdisk_tuts
-
-📡 Update Channel ➡️ t.me/""" + CHANNEL
-    return str + footer
-
-bot.run()
